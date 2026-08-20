@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Expense & Budget Visualizer - pencatat pengeluaran sederhana">
+  <title>Expense & Budget Visualizer</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">SEFC • Expense Tracker</p>
+      <h1>Expense & Budget Visualizer</h1>
+      <p class="subtitle">Catat pengeluaran harian dan lihat distribusinya dengan mudah.</p>
+    </div>
+    <button id="themeToggle" class="icon-button" type="button" aria-label="Ganti tema">🌙</button>
+  </header>
+
+  <main class="container">
+    <section class="balance-card" aria-labelledby="balanceTitle">
+      <div>
+        <p id="balanceTitle" class="card-label">Total Pengeluaran</p>
+        <h2 id="totalBalance">Rp0</h2>
+        <p id="transactionCount">0 transaksi</p>
+      </div>
+      <div class="balance-icon">💰</div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">Tambah Data</p>
+            <h2>Transaksi Baru</h2>
+          </div>
+        </div>
+
+        <form id="expenseForm" novalidate>
+          <label for="itemName">Nama Item</label>
+          <input id="itemName" name="itemName" type="text" placeholder="Contoh: Makan siang">
+
+          <label for="amount">Jumlah</label>
+          <input id="amount" name="amount" type="number" min="1" step="1" placeholder="Contoh: 25000">
+
+          <label for="category">Kategori</label>
+          <select id="category" name="category">
+            <option value="">Pilih kategori</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Fun">Fun</option>
+          </select>
+
+          <div class="custom-category-row">
+            <input id="customCategory" type="text" placeholder="Kategori custom (opsional)">
+            <button id="addCategoryBtn" class="secondary-button" type="button">Tambah Kategori</button>
+          </div>
+
+          <button class="primary-button" type="submit">+ Tambah Transaksi</button>
+          <p id="formMessage" class="form-message" role="alert"></p>
+        </form>
+      </div>
+
+      <div class="panel chart-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">Visualisasi</p>
+            <h2>Distribusi Pengeluaran</h2>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="expenseChart" aria-label="Pie chart distribusi pengeluaran"></canvas>
+        </div>
+        <div id="chartEmpty" class="empty-chart">Belum ada data untuk ditampilkan.</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading transactions-heading">
+        <div>
+          <p class="section-kicker">Riwayat</p>
+          <h2>Daftar Transaksi</h2>
+        </div>
+        <div class="sort-controls">
+          <label for="sortBy">Urutkan</label>
+          <select id="sortBy">
+            <option value="newest">Terbaru</option>
+            <option value="amountDesc">Jumlah terbesar</option>
+            <option value="amountAsc">Jumlah terkecil</option>
+            <option value="category">Kategori</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="transactionList" class="transaction-list" aria-live="polite"></div>
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">🧾</div>
+        <h3>Belum ada transaksi</h3>
+        <p>Tambahkan pengeluaran pertama kamu melalui form di atas.</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">Ringkasan</p>
+            <h2>Ringkasan Bulanan</h2>
+          </div>
+        </div>
+        <div id="monthlySummary" class="summary-list"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="section-kicker">Bantuan</p>
+            <h2>Catatan</h2>
+          </div>
+        </div>
+        <ul class="tips">
+          <li>Semua data disimpan di browser menggunakan Local Storage.</li>
+          <li>Data tetap tersimpan setelah halaman di-refresh.</li>
+          <li>Gunakan tombol hapus untuk menghapus transaksi tertentu.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Expense & Budget Visualizer • Vanilla HTML, CSS & JavaScript</p>
+  </footer>
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

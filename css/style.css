@@ -1,0 +1,394 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --text: #172033;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --danger: #dc2626;
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+body.dark {
+  --bg: #111827;
+  --surface: #1f2937;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --border: #374151;
+  --primary: #818cf8;
+  --primary-dark: #6366f1;
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-header,
+.container,
+.footer {
+  width: min(1100px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 42px 0 24px;
+}
+
+.eyebrow,
+.section-kicker,
+.card-label {
+  margin: 0 0 6px;
+  color: var(--primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.icon-button {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.container {
+  display: grid;
+  gap: 20px;
+  padding-bottom: 30px;
+}
+
+.balance-card,
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.balance-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.balance-card h2 {
+  margin-bottom: 4px;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.balance-card p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.balance-icon {
+  font-size: 2.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.panel {
+  padding: 24px;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.panel-heading h2 {
+  margin-bottom: 0;
+}
+
+label {
+  display: block;
+  margin: 14px 0 7px;
+  font-weight: 700;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.custom-category-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.primary-button,
+.secondary-button,
+.delete-button {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 800;
+}
+
+.primary-button {
+  width: 100%;
+  margin-top: 16px;
+  background: var(--primary);
+  color: white;
+}
+
+.primary-button:hover {
+  background: var(--primary-dark);
+}
+
+.secondary-button {
+  background: var(--text);
+  color: var(--surface);
+  white-space: nowrap;
+}
+
+.form-message {
+  min-height: 24px;
+  margin: 10px 0 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+.chart-wrapper {
+  position: relative;
+  min-height: 300px;
+}
+
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+.empty-chart {
+  display: none;
+  padding: 40px 10px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.transactions-heading {
+  align-items: flex-end;
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-controls label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.sort-controls select {
+  width: auto;
+  min-width: 170px;
+}
+
+.transaction-list {
+  max-height: 420px;
+  overflow-y: auto;
+  display: grid;
+  gap: 10px;
+  padding-right: 4px;
+}
+
+.transaction-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.transaction-name {
+  margin-bottom: 2px;
+  font-weight: 800;
+}
+
+.transaction-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.transaction-amount {
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.delete-button {
+  padding: 9px 12px;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid currentColor;
+}
+
+.empty-state {
+  padding: 30px 10px 10px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-state h3 {
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.empty-icon {
+  font-size: 2rem;
+}
+
+.summary-list {
+  display: grid;
+  gap: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child {
+  border-bottom: 0;
+}
+
+.summary-month {
+  font-weight: 700;
+}
+
+.summary-amount {
+  font-weight: 800;
+}
+
+.tips {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.tips li + li {
+  margin-top: 10px;
+}
+
+.footer {
+  padding: 10px 0 40px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 760px) {
+  .app-header {
+    padding-top: 28px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transactions-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .sort-controls {
+    justify-content: space-between;
+  }
+
+  .sort-controls select {
+    flex: 1;
+  }
+
+  .transaction-item {
+    grid-template-columns: 1fr auto;
+  }
+
+  .transaction-amount {
+    grid-column: 1 / 2;
+  }
+
+  .delete-button {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+  }
+
+  .custom-category-row {
+    grid-template-columns: 1fr;
+  }
+}
